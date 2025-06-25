@@ -64,7 +64,39 @@ self._view.txtresult.controls.append(ft.Text(f'{variabile} ciao'))
 --------------------------------------------------------
 Esempio Ricorsione
 --------------------------------------------------------
+ def team(self,k):
+    self.bestTeam = None
+    self.bestScore = 99999
+    self.ricorsione([],k)
+    return self.bestTeam,self.bestScore
+ 
+ def ricorsione(self,parziale,k):
+        if len(parziale)==k:
+            tasso=0
+            for n in copy.deepcopy(parziale):
+                for p in self.grafo.predecessors(n):
+                    if p not in parziale:
+                        tasso+=self.grafo[p][n]["peso"]
+                if tasso<self.bestScore:
+                    self.bestScore=tasso
+                    self.bestTeam=copy.deepcopy(parziale)
+        else:
+            possibili=self.successori(parziale,k)
+            for p in possibili:
+                parziale.append(p)
+                self.ricorsione(parziale,k)
+                parziale.pop()
 
+    def successori(self,parziale,k):
+        res=[]
+        if len(parziale)==0:
+            res=self.grafo.nodes()
+        else:
+            if len(parziale)<k:
+                for n in self.grafo.nodes():
+                    if n not in parziale:
+                        res.append(n)
+        return res
 
 --------------------------------------------------------
 Esempio Componenti connesse
