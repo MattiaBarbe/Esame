@@ -51,7 +51,12 @@ Esempio random
 --------------------------------------------------------
 #ciclare sugli archi con il peso
 for arco in self.grafo.edges(data=True):
-    arco.....
+    #arco.....
+
+#IDMAP!!!
+self.idMap={}
+for nodi in boh:
+self.idMap[nodi.id]=nodi
 
 #aggiungere elementi dropDown
 self._view.dd.options=[]
