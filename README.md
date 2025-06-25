@@ -5,12 +5,14 @@ Esempio DAO
     def getArchi(anno):
         conn = DBConnect.get_connection()
         cursor = conn.cursor(dictionary=True)
+        
         query = '''select r1.driverId as id1,r2.driverId as id2,count(distinct(r1.raceId)) as vittorie from results r1, results r2,races c1,races c2 
         where c1.`year`=%s and c2.`year`=%s and
         r1.raceId =c1.raceId and r2.raceId =c2.raceId and
         r1.driverId !=r2.driverId and r1.`position` >0 and r2.position>0 and
         r1.raceId=r2.raceId and r1.`position` <r2.`position`
         group by r1.driverId,r2.driverId order by r1.driverId,r2.driverId'''
+        
         cursor.execute(query,(anno,anno,))
         archi=[]
         nodi=[]
@@ -36,13 +38,28 @@ from dataclasses import dataclass
 class Pilota():
     driverId:int
     driverRef:str
-
+    
     def __eq__(self,other):
         return self.driverId == other.driverId
     def __hash__(self):
         return hash(self.driverId)
     def __str__(self):
         return self.driverRef
+--------------------------------------------------------
+Esempio random
+--------------------------------------------------------
+#ciclare sugli archi con il peso
+for arco in self.grafo.edges(data=True):
+    arco.....
+
+#aggiungere elementi dropDown
+self._view.dd.options=[]
+self._view.dd.options.append(ft.dropdown.Option(key="valore nascosto",text="valore visivo"))
+
+#aggiungere a stampa
+self._view.txtresult.controls=[]
+self._view.txtresult.controls.append(ft.Text(f'{variabile} ciao'))
+
 --------------------------------------------------------
 Esempio Ricorsione
 --------------------------------------------------------
