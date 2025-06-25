@@ -39,6 +39,7 @@ from dataclasses import dataclass
 class Pilota():
     driverId:int
     driverRef:str
+    vettore:[] --> posso non metterlo nell'inizializzazione
     
     def __eq__(self,other):
         return self.driverId == other.driverId
@@ -76,6 +77,12 @@ diz={}
         ordinato=sorted(diz,key=lambda x:diz[x], reverse=True)
         ordinato=ordinato[0:6]
         return ordinato,diz
+#datediff per differenza date database
+#unique
+
+#per classe con data
+from datetime import datetime
+    data:datetime
 
 --------------------------------------------------------
 Esempio Ricorsione
