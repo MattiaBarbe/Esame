@@ -66,6 +66,17 @@ self._view.dd.options.append(ft.dropdown.Option(key="valore nascosto",text="valo
 self._view.txtresult.controls=[]
 self._view.txtresult.controls.append(ft.Text(f'{variabile} ciao'))
 
+#ordinamento
+diz={}
+        for nodo in self.grafo.nodes():
+            diz[nodo]=0
+            for vicino in self.grafo.neighbors(nodo):
+                diz[nodo]+=self.grafo[nodo][vicino]["weight"]
+
+        ordinato=sorted(diz,key=lambda x:diz[x], reverse=True)
+        ordinato=ordinato[0:6]
+        return ordinato,diz
+
 --------------------------------------------------------
 Esempio Ricorsione
 --------------------------------------------------------
