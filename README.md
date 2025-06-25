@@ -29,6 +29,7 @@ Esempio DAO
 if __name__=="__main__":
     dao=DAO()
     print(dao.getArchi(1951))
+    #risultato.append(Pilota(**row))
 --------------------------------------------------------
 Esempio classe
 --------------------------------------------------------
